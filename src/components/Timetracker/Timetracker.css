@@ -1,0 +1,80 @@
+.Timesheet {
+  width: 96%;
+  padding: 20px;
+  background-color: #f2f6f8;
+  font-size: 20px;
+  /* min-height: 91.5vh; */
+}
+
+.Timesheet__table {
+  width: inherit;
+  margin: auto;
+  box-shadow: 2px 4px 8px rgba(212, 212, 212, 0.37);
+  padding: 1%;
+  text-transform: capitalize;
+  /* border-radius: 10px; */
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.Timesheet__table__repeat {
+  /* width: 90%; */
+  margin: auto;
+  /* box-shadow: 2px 4px 8px rgba(212, 212, 212, 0.37); */
+  /* padding: 1%; */
+  text-transform: capitalize;
+  border-radius: 10px;
+  /* background-color: #ffffff; */
+  /* display: flex; */
+}
+
+.Timesheet__table__repeat .Timesheet__table {
+  width: 93%;
+  margin: 10px auto;
+  /* box-shadow: 2px 4px 8px rgba(212, 212, 212, 0.37); */
+  padding: 1%;
+  text-transform: capitalize;
+  /* border-radius: 10px; */
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.Timesheet__table input {
+  width: 40%;
+  height: 30px;
+  /* border: 10px; */
+}
+.pro {
+  margin: 1%;
+}
+
+.Timesheet__table img {
+  margin-left: 60px;
+}
+.pro time {
+  margin-left: 30px;
+}
+#hidShow {
+  margin-left: 40%;
+  margin-top: 5px;
+  width: 250px;
+  height: 120px;
+  background: rgb(231, 168, 168);
+  display: none;
+}
+#btnTimeStart {
+  /* margin-left: 3%; */
+  background-color: rgb(3, 169, 244);
+  border: 0;
+  color: #ffffff;
+  padding: 10px;
+  width: 100px;
+}
+.icons {
+  height: 24px;
+  width: 24px;
+}

@@ -1,0 +1,23 @@
+.product__navigation {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  z-index: 99999;
+  background-color: white;
+  border-bottom: 1px solid#C6D2D8;
+  position: sticky;
+  top: 0;
+}
+.product__navigation i:nth-child(1) {
+  font-size: 25px;
+  align-self: stretch;
+}
+
+.product__navigation > div {
+  flex-basis: 1;
+  margin: 0 20px;
+  font-size: 18px;
+}
+.product__navigation__spacer {
+  flex-grow: 2;
+}
