@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Timetrackerrepat from "./Timetrackerrepat";
 import Totaltime from "./Totaltime";
 import "./Timetracker.css";
@@ -6,12 +6,20 @@ const Timetracker = (props) => {
   const [btnflag, setbtnflag] = useState(true);
   const [counts, setCount] = useState(0);
   const [totalTime, setTotalTime] = useState(0);
+  const [total, setTotal] = useState("00:00:00");
   const [time, setime] = useState("00:00:00");
   const [list, setList] = useState([]);
   const [input, setInput] = useState();
   const inputRef = useRef();
+  useEffect(() => {
+    let reCalTotalTime = 0;
+    list.map((elm) => {
+      reCalTotalTime = reCalTotalTime + elm.counts;
+    });
+    setTotal(convertHMS(reCalTotalTime));
+    console.log(reCalTotalTime, "its new t time");
+  }, [list]);
 
-  let total = convertHMS(totalTime);
   const deleteList = (index) => {
     setList((prevState) => {
       // return
@@ -19,14 +27,6 @@ const Timetracker = (props) => {
         console.log(element, "delete handler");
         return element !== prevState[index];
       });
-      console.log(updateded, "updated");
-      let timess = 0;
-      updateded.forEach((ele) => {
-        timess = timess + ele.counts;
-      });
-      const updatededtimess = convertHMS(timess);
-      total = updatededtimess;
-      console.log(timess, "timessssss", updatededtimess);
       return updateded;
     });
   };
@@ -88,7 +88,6 @@ const Timetracker = (props) => {
       localStorage.setItem("startDate", startDate);
       localStorage.setItem("interval", interval);
     } else {
-
       inputRef.current.focus();
     }
   }
@@ -109,10 +108,10 @@ const Timetracker = (props) => {
             {/* <span>Project</span> */}
             <img src="./plus-blue.svg" alt="" />
             <select>
-              <option selected>Clockify</option>
-              <option>Project</option>
-              <option>Project</option>
-              <option>Project</option>
+              <option selected disabled>Clockify</option>
+              <option>Project 1</option>
+              <option>Project 2</option>
+              <option>Project 3</option>
             </select>
           </div>
           <img src="./tag-gray.svg" alt="" />
@@ -140,7 +139,7 @@ const Timetracker = (props) => {
         <div id="hidShow"></div>
       </div>
       <div className="Timesheet__table__repeat" id="list">
-        <Totaltime total={total}></Totaltime>
+        <Totaltime total={total} />
         {list.map((elem, ind) => {
           console.log(elem.counts, "particular list time and index", ind);
           {

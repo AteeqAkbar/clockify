@@ -51,6 +51,20 @@
 .pro {
   margin: 1%;
 }
+.pro select{
+  margin-left: 10px;
+  width: 100px;
+  padding: 5px 10px;
+  border: none;
+  box-shadow: 5px 5px 10px #e0e0e0,10px 10px 8px #e0e0e0;
+  /* box-shadow: 5px 5px 10px blue, 10px 10px 10px red green; */
+  border-radius: 25px;
+}
+.pro select >option{
+  width: 110px;
+  padding: 5px 10px;
+  border: none; 
+}
 
 .Timesheet__table img {
   margin-left: 60px;
