@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Timetrackerrepat from "./Timetrackerrepat";
 import Totaltime from "./Totaltime";
 import "./Timetracker.css";
@@ -9,17 +9,25 @@ const Timetracker = (props) => {
   const [time, setime] = useState("00:00:00");
   const [list, setList] = useState([]);
   const [input, setInput] = useState();
+  const inputRef = useRef();
 
-  const total = convertHMS(totalTime);
-  // console.log();
+  let total = convertHMS(totalTime);
   const deleteList = (index) => {
-    // console.log("index in parent", index, "list");
     setList((prevState) => {
-      // console.log(prevState[0].props);
-      // return prevState;
-      return prevState.filter((element) => {
+      // return
+      const updateded = prevState.filter((element) => {
+        console.log(element, "delete handler");
         return element !== prevState[index];
       });
+      console.log(updateded, "updated");
+      let timess = 0;
+      updateded.forEach((ele) => {
+        timess = timess + ele.counts;
+      });
+      const updatededtimess = convertHMS(timess);
+      total = updatededtimess;
+      console.log(timess, "timessssss", updatededtimess);
+      return updateded;
     });
   };
   function stopTimer() {
@@ -30,8 +38,8 @@ const Timetracker = (props) => {
     const startDate = localStorage.getItem("startDate");
     console.log(localStorage.getItem("startDate"), stopDate);
     console.log("Total Time", totalTime);
-    setCount(0);
-    setime("00:00:00");
+    // setCount(0);
+    // setime("00:00:00");
     if (!input) {
     } else {
       setList(() => {
@@ -61,23 +69,28 @@ const Timetracker = (props) => {
     return hours + ":" + minutes + ":" + seconds; // Return is HH : MM : SS
   }
   function startTimer() {
-    // console.log(counts);
-    setbtnflag(false);
+    if (input) {
+      console.log(counts);
+      setbtnflag(false);
 
-    const interval = setInterval(() => {
-      setCount((prevState) => {
-        const sec = prevState + 1;
-        const strTime = convertHMS(sec);
-        setime(strTime);
-        setTotalTime(totalTime + sec);
+      const interval = setInterval(() => {
+        setCount((prevState) => {
+          const sec = prevState + 1;
+          const strTime = convertHMS(sec);
+          setime(strTime);
+          setTotalTime(totalTime + sec);
 
-        return sec;
-      });
-    }, 1000);
-    const date = new Date();
-    const startDate = date.toLocaleTimeString();
-    localStorage.setItem("startDate", startDate);
-    localStorage.setItem("interval", interval);
+          return sec;
+        });
+      }, 1000);
+      const date = new Date();
+      const startDate = date.toLocaleTimeString();
+      localStorage.setItem("startDate", startDate);
+      localStorage.setItem("interval", interval);
+    } else {
+
+      inputRef.current.focus();
+    }
   }
 
   return (
@@ -86,6 +99,7 @@ const Timetracker = (props) => {
         <div className="Timesheet__table">
           <input
             type="text"
+            ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             id="text"
@@ -129,7 +143,9 @@ const Timetracker = (props) => {
         <Totaltime total={total}></Totaltime>
         {list.map((elem, ind) => {
           console.log(elem.counts, "particular list time and index", ind);
-          {/* setTotalTime(totalTime + elem.counts); */}
+          {
+            /* setTotalTime(totalTime + elem.counts); */
+          }
           return (
             <Timetrackerrepat
               key={ind}
