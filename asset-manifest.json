@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/clockify/static/css/main.0beb3c7a.css",
+    "main.js": "/clockify/static/js/main.b3b4ff4f.js",
+    "static/js/787.0edbcda9.chunk.js": "/clockify/static/js/787.0edbcda9.chunk.js",
+    "index.html": "/clockify/index.html",
+    "main.0beb3c7a.css.map": "/clockify/static/css/main.0beb3c7a.css.map",
+    "main.b3b4ff4f.js.map": "/clockify/static/js/main.b3b4ff4f.js.map",
+    "787.0edbcda9.chunk.js.map": "/clockify/static/js/787.0edbcda9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0beb3c7a.css",
+    "static/js/main.b3b4ff4f.js"
+  ]
+}
