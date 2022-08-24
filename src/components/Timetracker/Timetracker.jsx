@@ -108,7 +108,9 @@ const Timetracker = (props) => {
             {/* <span>Project</span> */}
             <img src="./plus-blue.svg" alt="" />
             <select>
-              <option selected disabled>Clockify</option>
+              <option selected disabled>
+                Clockify
+              </option>
               <option>Project 1</option>
               <option>Project 2</option>
               <option>Project 3</option>
@@ -119,22 +121,23 @@ const Timetracker = (props) => {
           <div className="pro">
             <time id="time">{time}</time>
           </div>
-
-          {btnflag ? (
-            <img
-              onClick={startTimer}
-              className="icons"
-              src="./play.png"
-              alt=""
-            />
-          ) : (
-            <img
-              onClick={stopTimer}
-              className="icons"
-              src="./puse.png"
-              alt=""
-            />
-          )}
+          <div className="btn-water">
+            {btnflag ? (
+              <img
+                onClick={startTimer}
+                className="icons"
+                src="./play.png"
+                alt=""
+              />
+            ) : (
+              <img
+                onClick={stopTimer}
+                className="icons"
+                src="./puse.png"
+                alt=""
+              />
+            )}
+          </div>
         </div>
         <div id="hidShow"></div>
       </div>
